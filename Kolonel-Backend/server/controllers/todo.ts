@@ -12,10 +12,10 @@ export const getAllTodo = (req: Request, res: Response) => {
     );
 };
 
-/* interface postCreateTodoType {
+interface postCreateTodoType {
   text: string; complete: string; _id: number
 }
- */
+
 
 export const postCreateTodo = (req: Request, res: Response) => {
   Todo.create(req.body)

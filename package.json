@@ -1,0 +1,15 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "install:CF": "npm install",
+    "install:backend": "cd Kolonel-Backend && npm install",
+    "install:frontend": "cd Kolonel-frontend && npm install",
+    "postinstall": "run-p install:*"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.2"
+  }
+}
