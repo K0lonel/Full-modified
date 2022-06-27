@@ -1,8 +1,8 @@
 const Todo = require("../models/todo");
-const { NextFunction, Request, Response } = require("express");
+import {Request, Response } from "express";
 
 
-exports.getAllTodo = (req:Request, res:Response) => {
+export const getAllTodo = (req:Request, res:Response) => {
   Todo.find()
     .then((data) => {
       res.json(data);
@@ -17,7 +17,7 @@ interface postCreateTodoType{
 }
 
 
-exports.postCreateTodo = (req:Request, res:Response) => {
+export const postCreateTodo = (req:Request, res:Response) => {
   Todo.create(req.body)
     .then(({ text, complete, _id }: postCreateTodoType) => {
       // console.log(data);
@@ -35,7 +35,7 @@ exports.postCreateTodo = (req:Request, res:Response) => {
     );
 };
 
-exports.putUpdateTodo = (req:Request, res:Response) => {
+export const putUpdateTodo = (req:Request, res:Response) => {
   Todo.findByIdAndUpdate(req.params.id, req.body)
     .then((data) =>
       res.status(200).json({ message: "updated successfully", data })
@@ -48,7 +48,7 @@ exports.putUpdateTodo = (req:Request, res:Response) => {
 };
 
 
-exports.deleteTodo = (req:Request, res:Response) => {
+export const deleteTodo = (req:Request, res:Response) => {
   Todo.findByIdAndRemove(req.params.id, req.body)
     .then((data) =>
       res.status(200).json({ message: "todo deleted successfully", data })

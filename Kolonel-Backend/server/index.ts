@@ -1,15 +1,15 @@
-const express = require("express");
-const { NextFunction, Request, Response } = require("express");
-const cors = require("cors");
-const connectDB = require("./config/db");
-const routes = require("./routes/todo");
+import express, { Request, Response }  from "express"
+import cors  from "cors"
+import connectDB from "./config/db"
+import routes  from "./routes/todo"
 
 const app = express();
 connectDB();
 
 
 app.use(cors({ origin: true, credentials: true }));
-app.use(express.json({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/todo", routes);
 app.get("/", (req:Request, res:Response) => res.send("Server up and running"));
