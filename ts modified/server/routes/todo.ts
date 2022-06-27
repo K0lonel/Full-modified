@@ -1,12 +1,14 @@
-const express = require("express");
+import express from "express"
+
+
 const router = express.Router();
 
-const {
+import {
   getAllTodo,
   postCreateTodo,
   putUpdateTodo,
   deleteTodo,
-} = require("../controllers/todo");
+} from "../controllers/todo"
 
 router.get("/", getAllTodo);
 
@@ -16,4 +18,4 @@ router.put("/:id", putUpdateTodo);
 
 router.delete("/:id", deleteTodo);
 
-module.exports = router;
+export default router;

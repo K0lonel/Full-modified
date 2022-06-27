@@ -1,12 +1,12 @@
 // models/todo.js
-const mongoose = require("mongoose");
+import { Schema, model} from "mongoose"
 
-interface TodoInformation {
+interface TodoInformation{
   text: string;
   complete: boolean;
 }
 
-const TodoSchema = new mongoose.Schema<TodoInformation>({
+const TodoSchema = new Schema<TodoInformation>({
   text: {
     type: String,
     required: true,
@@ -17,5 +17,5 @@ const TodoSchema = new mongoose.Schema<TodoInformation>({
   },
 });
 
-const Todo = mongoose.model<TodoInformation>("todo", TodoSchema);
-module.exports = Todo;
+const Todo = model<TodoInformation>("todo", TodoSchema);
+export default Todo;
