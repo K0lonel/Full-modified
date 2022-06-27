@@ -1,8 +1,8 @@
 import Todo from "../models/todo"
-import {Request, Response } from "express";
+import { Request, Response } from "express";
 
 
-export const getAllTodo = (req:Request, res:Response) => {
+export const getAllTodo = (req: Request, res: Response) => {
   Todo.find()
     .then((data) => {
       res.json(data);
@@ -12,14 +12,14 @@ export const getAllTodo = (req:Request, res:Response) => {
     );
 };
 
-interface postCreateTodoType{
-  text:string, complete:string, _id:number
+/* interface postCreateTodoType {
+  text: string; complete: string; _id: number
 }
+ */
 
-
-export const postCreateTodo = (req:Request, res:Response) => {
+export const postCreateTodo = (req: Request, res: Response) => {
   Todo.create(req.body)
-    .then(({ text, complete, _id }: postCreateTodoType) => {
+    .then(({ text, complete, _id }) => {
       // console.log(data);
       res
         .status(200)
@@ -35,7 +35,7 @@ export const postCreateTodo = (req:Request, res:Response) => {
     );
 };
 
-export const putUpdateTodo = (req:Request, res:Response) => {
+export const putUpdateTodo = (req: Request, res: Response) => {
   Todo.findByIdAndUpdate(req.params.id, req.body)
     .then((data) =>
       res.status(200).json({ message: "updated successfully", data })
@@ -48,7 +48,7 @@ export const putUpdateTodo = (req:Request, res:Response) => {
 };
 
 
-export const deleteTodo = (req:Request, res:Response) => {
+export const deleteTodo = (req: Request, res: Response) => {
   Todo.findByIdAndRemove(req.params.id, req.body)
     .then((data) =>
       res.status(200).json({ message: "todo deleted successfully", data })
