@@ -4,10 +4,14 @@
   "private": true,
   "dependencies": {},
   "scripts": {
-    "install:CF": "npm install",
-    "install:backend": "cd Kolonel-Backend && npm install",
-    "install:frontend": "cd Kolonel-frontend && npm install",
-    "postinstall": "run-p install:*"
+    "setup:backend": "cd Kolonel-Backend && npm install",
+    "setup:frontend": "cd Kolonel-frontend && npm install",
+    "postinstall": "npm run setup:backend  && npm run setup:frontend",
+    "build:client": "npm run build --prefix Kolonel-frontend",
+    "start:server": "node server",
+    "dev:backend": "npm run dev --prefix Kolonel-Backend",
+    "dev:frontend": "npm run start --prefix Kolonel-frontend",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
   },
   "devDependencies": {
     "concurrently": "^7.2.2"
